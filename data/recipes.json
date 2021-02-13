@@ -36,5 +36,24 @@
         "unit": "g"
       }
     ]
+  },
+  {
+    "name_recipe": "pates bolo",
+    "ingredients": [
+      {
+        "name": "pates",
+        "quantity": 100,
+        "unit": "g"
+      },
+      {
+        "name": "tomates",
+        "quantity": 1
+      },
+      {
+        "name": "viande hachée",
+        "quantity": 100,
+        "unit": "g"
+      }
+    ]
   }
 ]
