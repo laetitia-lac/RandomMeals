@@ -1,6 +1,7 @@
 .idea
 *.pdf
 *.pkl
+nppBackup/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
