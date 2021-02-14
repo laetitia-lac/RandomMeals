@@ -4,7 +4,7 @@
 
 ### Prerequisites
 
-* Python 3.6 (with Anaconda to get project environment).
+* Python 3.6 (with [Anaconda](https://docs.anaconda.com/anaconda/install/windows/) to get project environment).
 
 ### Installing
 
@@ -21,5 +21,5 @@ or simply run the file [install_random_meals.bat](install_random_meals.bat)
 run the file [generate_random_meals.bat](generate_random_meals.bat). It will create
   a pdf, located in [data/shopping_list.pdf](data/shopping_list.pdf).
 
-## TO DO
-* generate as google keep [link](https://github.com/kiwiz/gkeepapi)
+## Further improvements
+* generate output user as google keep [link](https://github.com/kiwiz/gkeepapi)
