@@ -4,6 +4,7 @@ import logging
 log_format = '%(asctime)s - %(name)s - %(levelname)s - %(message)s'
 logging.basicConfig(level=logging.DEBUG, format=log_format)
 logger = logging.getLogger('random_meals_logger')
+logger.propagate = False
 
 # create file handler
 file_handler = logging.FileHandler('logs/random_meals.log')
