@@ -50,6 +50,11 @@
         "quantity": 1
       },
       {
+        "name": "tomates",
+        "quantity": 100,
+        "unit": "g"
+      },
+      {
         "name": "viande hachée",
         "quantity": 100,
         "unit": "g"

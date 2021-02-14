@@ -31,12 +31,17 @@ def write_subpart_pdf(pdf_file, title_subpart, checkbox_content_subpart):
             pdf_file.ln()
     elif isinstance(checkbox_content_subpart, dict):
         # dict = shopping list
-        for key, quantity in checkbox_content_subpart.items():
-            checkbox_line = '☐ {} ({}{})'.format(key[0], quantity, key[1]) if isinstance(key, tuple) \
-                else '☐ {} ({})'.format(key, quantity)
+        # 1. sort the ingredients alphabetically
+        name_ingredients_sorted = sorted(checkbox_content_subpart.keys())
 
-            pdf_file.write(5, checkbox_line)
-            pdf_file.ln()
+        # 2. display shopping list
+        for name_ingredient in name_ingredients_sorted:
+            for unit, quantity in checkbox_content_subpart[name_ingredient].items():
+                checkbox_line = '☐ {} ({}{})'.format(name_ingredient, quantity, unit) if unit is not None \
+                    else '☐ {} ({})'.format(name_ingredient, quantity)
+
+                pdf_file.write(5, checkbox_line)
+                pdf_file.ln()
 
     return pdf_file
 
@@ -65,7 +70,7 @@ if __name__ == '__main__':
 
     # choose the recipes for the week
     # 1. take recipes which were not selected last week
-    all_recipes_names = set([recipe['name_recipe'] for recipe in list_recipes])
+    all_recipes_names = {recipe['name_recipe'] for recipe in list_recipes}
     unused_recipes_names = all_recipes_names - chosen_recipes_names_last_week
     logger.debug('Unused recipes: {}'.format(unused_recipes_names))
     chosen_recipes_names = random.sample(unused_recipes_names,
@@ -92,14 +97,17 @@ if __name__ == '__main__':
         for ingredient_recipe in recipe['ingredients']:
             ingredient_name = ingredient_recipe['name'].lower()
             ingredient_quantity = ingredient_recipe['quantity']
-            ingredient_unit = ingredient_recipe.get('unit', None)
+            ingredient_unit = ingredient_recipe['unit'].lower() if ingredient_recipe.get('unit') else None
 
             logger.debug('Ingredient "{}" will be added to the shopping list (for recipe "{}")'.format(ingredient_name,
                                                                                                        recipe[
                                                                                                            'name_recipe']))
 
-            key = (ingredient_name, ingredient_unit.lower()) if ingredient_unit is not None else ingredient_name
-            shopping_list[key] = shopping_list.get(key, 0) + ingredient_quantity
+            # add ingredient to shopping list
+            ingredient_dict = shopping_list.get(ingredient_name, dict())
+            ingredient_dict[ingredient_unit] = ingredient_dict.get(ingredient_unit, 0) + ingredient_quantity
+            shopping_list[ingredient_name] = ingredient_dict
+
     logger.debug('Shopping list: {}'.format(shopping_list))
 
     # generate the output for user
