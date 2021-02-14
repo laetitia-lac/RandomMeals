@@ -44,7 +44,7 @@ def write_pdf_file(path_file, chosen_recipes_names, shopping_list):
 
 
 if __name__ == '__main__':
-    nb_of_recipes_to_choose = 2
+    nb_of_recipes_to_choose = int(input('Indicate the number of meals to generate for this week: '))
 
     logger.debug('Beginning of program')
     list_recipes = return_content_json_file('data/recipes.json')

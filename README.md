@@ -22,5 +22,4 @@ run the file [generate_random_meals.bat](generate_random_meals.bat). It will cre
   a pdf, located in [data/shopping_list.pdf](data/shopping_list.pdf).
 
 ## TO DO
-* put input of nb_random_meals
 * generate as google keep [link](https://github.com/kiwiz/gkeepapi)
