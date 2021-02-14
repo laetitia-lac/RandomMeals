@@ -1,3 +1,5 @@
+@echo OFF
 call conda activate py36_random_meals_env
 python src/main.py
-conda deactivate
+call conda deactivate
+echo SHOPPING LIST HAS BEEN CREATED. ENJOY!
