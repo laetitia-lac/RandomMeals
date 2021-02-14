@@ -24,24 +24,9 @@ def write_subpart_pdf(pdf_file, title_subpart, checkbox_content_subpart):
 
     # checkbox subpart
     pdf_file.set_font('DejaVu', size=12)
-    if isinstance(checkbox_content_subpart, list):
-        # list = chosen recipes
-        for recipe in checkbox_content_subpart:
-            pdf_file.write(5, '☐ {}'.format(recipe))
-            pdf_file.ln()
-    elif isinstance(checkbox_content_subpart, dict):
-        # dict = shopping list
-        # 1. sort the ingredients alphabetically
-        name_ingredients_sorted = sorted(checkbox_content_subpart.keys())
-
-        # 2. display shopping list
-        for name_ingredient in name_ingredients_sorted:
-            for unit, quantity in checkbox_content_subpart[name_ingredient].items():
-                checkbox_line = '☐ {} ({}{})'.format(name_ingredient, quantity, unit) if unit is not None \
-                    else '☐ {} ({})'.format(name_ingredient, quantity)
-
-                pdf_file.write(5, checkbox_line)
-                pdf_file.ln()
+    for checkbox_line in checkbox_content_subpart:
+        pdf_file.write(5, checkbox_line)
+        pdf_file.ln()
 
     return pdf_file
 
@@ -111,7 +96,17 @@ if __name__ == '__main__':
     logger.debug('Shopping list: {}'.format(shopping_list))
 
     # generate the output for user
+    # 1. format chosen recipes names
+    formatted_chosen_recipes_names = ['☐ {}'.format(recipe) for recipe in chosen_recipes_names]
+    # 2. format shopping list
+    formatted_shopping_list = list()
+    name_ingredients_sorted = sorted(shopping_list.keys())
+    for name_ingredient in name_ingredients_sorted:
+        for unit, quantity in shopping_list[name_ingredient].items():
+            formatted_shopping_list.append('☐ {} ({}{})'.format(name_ingredient, quantity, unit) if unit is not None
+                                           else '☐ {} ({})'.format(name_ingredient, quantity))
+
     logger.debug('Write output pdf')
-    write_pdf_file('data/shopping_list.pdf', chosen_recipes_names, shopping_list)
+    write_pdf_file('data/shopping_list.pdf', formatted_chosen_recipes_names, formatted_shopping_list)
 
     logger.debug('End of program')
