@@ -1,0 +1,64 @@
+[
+  {
+    "name_recipe": "pates carbo",
+    "ingredients": [
+      {
+        "name": "pates",
+        "quantity": 100,
+        "unit": "g"
+      },
+      {
+        "name": "lardons",
+        "quantity": 50,
+        "unit": "g"
+      }
+    ]
+  },
+  {
+    "name_recipe": "pizza",
+    "ingredients": [
+      {
+        "name": "pate brisee",
+        "quantity": 1
+      },
+      {
+        "name": "tomates",
+        "quantity": 2
+      },
+      {
+        "name": "fromage",
+        "quantity": 200,
+        "unit": "g"
+      },
+      {
+        "name": "lardons",
+        "quantity": 50,
+        "unit": "g"
+      }
+    ]
+  },
+  {
+    "name_recipe": "pates bolo",
+    "ingredients": [
+      {
+        "name": "pates",
+        "quantity": 100,
+        "unit": "g"
+      },
+      {
+        "name": "tomates",
+        "quantity": 1
+      },
+      {
+        "name": "tomates",
+        "quantity": 100,
+        "unit": "g"
+      },
+      {
+        "name": "viande hachée",
+        "quantity": 100,
+        "unit": "g"
+      }
+    ]
+  }
+]
