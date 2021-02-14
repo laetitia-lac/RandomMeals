@@ -7,7 +7,7 @@ from utils.logger import logger
 
 
 def return_content_json_file(path_file):
-    with open(path_file) as json_file:
+    with open(path_file, 'rb') as json_file:
         return json.load(json_file)
 
 
@@ -34,7 +34,7 @@ def write_subpart_pdf(pdf_file, title_subpart, checkbox_content_subpart):
 def write_pdf_file(path_file, chosen_recipes_names, shopping_list):
     pdf_file = fpdf.FPDF(format='A4')
     pdf_file.add_page()
-    pdf_file.add_font('DejaVu', '', 'src/pdf_utils/DejaVuSansCondensed.ttf', uni=True)
+    pdf_file.add_font('DejaVu', '', 'src/pdf_utils/DejaVuSans.ttf', uni=True)
 
     write_subpart_pdf(pdf_file, 'LISTE DE RECETTES DE LA SEMAINE', chosen_recipes_names)
     pdf_file.ln()

@@ -16,5 +16,4 @@ conda activate py36_random_meals_env
 
 ## TO DO
 * find a friendly way to execute main python
-* check unicode characters in pdf
 * generate as google keep [link](https://github.com/kiwiz/gkeepapi)
